@@ -10,15 +10,10 @@
 
 @implementation ShelterPointAnnotation
 
-/**
- * @brief Modifieur de la propriété shelterData
- *
- * @param aShelterData Nouvelles données sur l'abri
- */
 - (void)setShelterData:(NSDictionary *)aShelterData {
     _shelterData = aShelterData;
     
-    NSLog(@"%@",aShelterData);
+    //NSLog(@"%@",aShelterData);
     
     NSArray * coordinates = aShelterData[@"location"];
     CLLocationDegrees lat = [coordinates[1] doubleValue];
@@ -32,7 +27,12 @@
     }
     
     id places = aShelterData[@"capacity"];
-    NSString * capacity = [places isKindOfClass:[NSNumber class]]?[NSString stringWithFormat:@"%@ places",places]:@"Capacité inconnue";
+    NSString * capacity = [[NSString alloc] init];
+    if([places isKindOfClass:[NSNumber class]]) {
+        capacity = ([places doubleValue] <=1)?[NSString stringWithFormat:@"%@ place",places]:[NSString stringWithFormat:@"%@ places",places];
+    } else {
+        capacity = @"Capacité inconnue";
+    }
 
     self.title = [NSString stringWithFormat:@"%@ - %@",type,capacity];
     id address = aShelterData[@"address"];

@@ -26,14 +26,23 @@
 		D026C0E81B173FAC0040D36A /* UIWebView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = D026C0D71B173FAC0040D36A /* UIWebView+AFNetworking.m */; };
 		D05A72E51AF8BEE2006412C8 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D05A72E41AF8BEE2006412C8 /* main.m */; };
 		D05A72E81AF8BEE2006412C8 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D05A72E71AF8BEE2006412C8 /* AppDelegate.m */; };
-		D05A72EB1AF8BEE2006412C8 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D05A72EA1AF8BEE2006412C8 /* ViewController.m */; };
-		D05A72EE1AF8BEE2006412C8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D05A72EC1AF8BEE2006412C8 /* Main.storyboard */; };
-		D05A72F01AF8BEE2006412C8 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D05A72EF1AF8BEE2006412C8 /* Images.xcassets */; };
 		D05A72F31AF8BEE2006412C8 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = D05A72F11AF8BEE2006412C8 /* LaunchScreen.xib */; };
 		D05A72FF1AF8BEE2006412C8 /* Abri_Ve_lo_PoitiersTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D05A72FE1AF8BEE2006412C8 /* Abri_Ve_lo_PoitiersTests.m */; };
-		D0C552D21AF8C9CF0017CBC3 /* abris_appuis_velos.json in Resources */ = {isa = PBXBuildFile; fileRef = D0C552D11AF8C9CF0017CBC3 /* abris_appuis_velos.json */; };
-		D0FB9E8B1B21CBF8008D3753 /* ShelterPointAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = D0FB9E8A1B21CBF8008D3753 /* ShelterPointAnnotation.m */; };
 		D0FB9E8D1B21DB17008D3753 /* 1pxBlue.png in Resources */ = {isa = PBXBuildFile; fileRef = D0FB9E8C1B21DB17008D3753 /* 1pxBlue.png */; };
+		D3CB1E181B3D9DA900582481 /* ParkPointAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = D3CB1E0F1B3D9DA900582481 /* ParkPointAnnotation.m */; };
+		D3CB1E191B3D9DA900582481 /* ServicePointAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = D3CB1E111B3D9DA900582481 /* ServicePointAnnotation.m */; };
+		D3CB1E1A1B3D9DA900582481 /* Setting2ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D3CB1E131B3D9DA900582481 /* Setting2ViewController.m */; };
+		D3CB1E1B1B3D9DA900582481 /* Setting3ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D3CB1E151B3D9DA900582481 /* Setting3ViewController.m */; };
+		D3CB1E1C1B3D9DA900582481 /* SettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D3CB1E171B3D9DA900582481 /* SettingViewController.m */; };
+		D3CB1E1F1B3D9DC300582481 /* TicketmachinePointAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = D3CB1E1E1B3D9DC300582481 /* TicketmachinePointAnnotation.m */; };
+		D3CB1E211B3D9DE200582481 /* ShelterPointAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = D3CB1E201B3D9DE200582481 /* ShelterPointAnnotation.m */; };
+		D3CB1E231B3D9DFE00582481 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D3CB1E221B3D9DFE00582481 /* ViewController.m */; };
+		D3CB1E251B3D9E1500582481 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D3CB1E241B3D9E1500582481 /* Main.storyboard */; };
+		D3CB1E271B3D9E2B00582481 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D3CB1E261B3D9E2B00582481 /* Images.xcassets */; };
+		D3CB1E2B1B3D9E4500582481 /* Equipements_publics.json in Resources */ = {isa = PBXBuildFile; fileRef = D3CB1E281B3D9E4500582481 /* Equipements_publics.json */; };
+		D3CB1E2C1B3D9E4500582481 /* GIG_GIC.json in Resources */ = {isa = PBXBuildFile; fileRef = D3CB1E291B3D9E4500582481 /* GIG_GIC.json */; };
+		D3CB1E2D1B3D9E4500582481 /* Horodateurs.json in Resources */ = {isa = PBXBuildFile; fileRef = D3CB1E2A1B3D9E4500582481 /* Horodateurs.json */; };
+		D3CB1E2F1B3D9E5200582481 /* abris_appuis_velos.json in Resources */ = {isa = PBXBuildFile; fileRef = D3CB1E2E1B3D9E5200582481 /* abris_appuis_velos.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -89,17 +98,32 @@
 		D05A72E61AF8BEE2006412C8 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		D05A72E71AF8BEE2006412C8 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		D05A72E91AF8BEE2006412C8 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		D05A72EA1AF8BEE2006412C8 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		D05A72ED1AF8BEE2006412C8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		D05A72EF1AF8BEE2006412C8 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		D05A72F21AF8BEE2006412C8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		D05A72F81AF8BEE2006412C8 /* Abri Vélo PoitiersTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Abri Vélo PoitiersTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D05A72FD1AF8BEE2006412C8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D05A72FE1AF8BEE2006412C8 /* Abri_Ve_lo_PoitiersTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Abri_Ve_lo_PoitiersTests.m; sourceTree = "<group>"; };
-		D0C552D11AF8C9CF0017CBC3 /* abris_appuis_velos.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = abris_appuis_velos.json; sourceTree = "<group>"; };
 		D0FB9E891B21CBF8008D3753 /* ShelterPointAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShelterPointAnnotation.h; sourceTree = "<group>"; };
-		D0FB9E8A1B21CBF8008D3753 /* ShelterPointAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShelterPointAnnotation.m; sourceTree = "<group>"; };
 		D0FB9E8C1B21DB17008D3753 /* 1pxBlue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1pxBlue.png; sourceTree = "<group>"; };
+		D3CB1E0E1B3D9DA900582481 /* ParkPointAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParkPointAnnotation.h; sourceTree = "<group>"; };
+		D3CB1E0F1B3D9DA900582481 /* ParkPointAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParkPointAnnotation.m; sourceTree = "<group>"; };
+		D3CB1E101B3D9DA900582481 /* ServicePointAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServicePointAnnotation.h; sourceTree = "<group>"; };
+		D3CB1E111B3D9DA900582481 /* ServicePointAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServicePointAnnotation.m; sourceTree = "<group>"; };
+		D3CB1E121B3D9DA900582481 /* Setting2ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Setting2ViewController.h; sourceTree = "<group>"; };
+		D3CB1E131B3D9DA900582481 /* Setting2ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Setting2ViewController.m; sourceTree = "<group>"; };
+		D3CB1E141B3D9DA900582481 /* Setting3ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Setting3ViewController.h; sourceTree = "<group>"; };
+		D3CB1E151B3D9DA900582481 /* Setting3ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Setting3ViewController.m; sourceTree = "<group>"; };
+		D3CB1E161B3D9DA900582481 /* SettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingViewController.h; sourceTree = "<group>"; };
+		D3CB1E171B3D9DA900582481 /* SettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingViewController.m; sourceTree = "<group>"; };
+		D3CB1E1D1B3D9DC300582481 /* TicketmachinePointAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TicketmachinePointAnnotation.h; sourceTree = "<group>"; };
+		D3CB1E1E1B3D9DC300582481 /* TicketmachinePointAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TicketmachinePointAnnotation.m; sourceTree = "<group>"; };
+		D3CB1E201B3D9DE200582481 /* ShelterPointAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShelterPointAnnotation.m; sourceTree = "<group>"; };
+		D3CB1E221B3D9DFE00582481 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		D3CB1E241B3D9E1500582481 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		D3CB1E261B3D9E2B00582481 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		D3CB1E281B3D9E4500582481 /* Equipements_publics.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Equipements_publics.json; sourceTree = "<group>"; };
+		D3CB1E291B3D9E4500582481 /* GIG_GIC.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = GIG_GIC.json; sourceTree = "<group>"; };
+		D3CB1E2A1B3D9E4500582481 /* Horodateurs.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Horodateurs.json; sourceTree = "<group>"; };
+		D3CB1E2E1B3D9E5200582481 /* abris_appuis_velos.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = abris_appuis_velos.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -192,16 +216,16 @@
 		D05A72E11AF8BEE2006412C8 /* Abri Vélo Poitiers */ = {
 			isa = PBXGroup;
 			children = (
+				D3CB1E311B3D9EBA00582481 /* SettingViewController */,
+				D3CB1E301B3D9E8B00582481 /* PointAnnotation */,
 				D0C552D01AF8C9BD0017CBC3 /* Resources */,
 				D05A72E61AF8BEE2006412C8 /* AppDelegate.h */,
 				D05A72E71AF8BEE2006412C8 /* AppDelegate.m */,
 				D05A72E91AF8BEE2006412C8 /* ViewController.h */,
-				D05A72EA1AF8BEE2006412C8 /* ViewController.m */,
-				D0FB9E891B21CBF8008D3753 /* ShelterPointAnnotation.h */,
-				D0FB9E8A1B21CBF8008D3753 /* ShelterPointAnnotation.m */,
-				D05A72EC1AF8BEE2006412C8 /* Main.storyboard */,
-				D05A72EF1AF8BEE2006412C8 /* Images.xcassets */,
+				D3CB1E221B3D9DFE00582481 /* ViewController.m */,
+				D3CB1E241B3D9E1500582481 /* Main.storyboard */,
 				D05A72F11AF8BEE2006412C8 /* LaunchScreen.xib */,
+				D3CB1E261B3D9E2B00582481 /* Images.xcassets */,
 				D05A72E21AF8BEE2006412C8 /* Supporting Files */,
 				D026C0B21B173FAC0040D36A /* AFNetworking */,
 				D026C0C61B173FAC0040D36A /* UIKit+AFNetworking */,
@@ -245,10 +269,41 @@
 		D0C552D01AF8C9BD0017CBC3 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				D3CB1E2E1B3D9E5200582481 /* abris_appuis_velos.json */,
+				D3CB1E281B3D9E4500582481 /* Equipements_publics.json */,
+				D3CB1E291B3D9E4500582481 /* GIG_GIC.json */,
+				D3CB1E2A1B3D9E4500582481 /* Horodateurs.json */,
 				D0FB9E8C1B21DB17008D3753 /* 1pxBlue.png */,
-				D0C552D11AF8C9CF0017CBC3 /* abris_appuis_velos.json */,
 			);
 			name = Resources;
+			sourceTree = "<group>";
+		};
+		D3CB1E301B3D9E8B00582481 /* PointAnnotation */ = {
+			isa = PBXGroup;
+			children = (
+				D0FB9E891B21CBF8008D3753 /* ShelterPointAnnotation.h */,
+				D3CB1E201B3D9DE200582481 /* ShelterPointAnnotation.m */,
+				D3CB1E1D1B3D9DC300582481 /* TicketmachinePointAnnotation.h */,
+				D3CB1E1E1B3D9DC300582481 /* TicketmachinePointAnnotation.m */,
+				D3CB1E0E1B3D9DA900582481 /* ParkPointAnnotation.h */,
+				D3CB1E0F1B3D9DA900582481 /* ParkPointAnnotation.m */,
+				D3CB1E101B3D9DA900582481 /* ServicePointAnnotation.h */,
+				D3CB1E111B3D9DA900582481 /* ServicePointAnnotation.m */,
+			);
+			name = PointAnnotation;
+			sourceTree = "<group>";
+		};
+		D3CB1E311B3D9EBA00582481 /* SettingViewController */ = {
+			isa = PBXGroup;
+			children = (
+				D3CB1E121B3D9DA900582481 /* Setting2ViewController.h */,
+				D3CB1E131B3D9DA900582481 /* Setting2ViewController.m */,
+				D3CB1E141B3D9DA900582481 /* Setting3ViewController.h */,
+				D3CB1E151B3D9DA900582481 /* Setting3ViewController.m */,
+				D3CB1E161B3D9DA900582481 /* SettingViewController.h */,
+				D3CB1E171B3D9DA900582481 /* SettingViewController.m */,
+			);
+			name = SettingViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -337,10 +392,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				D0FB9E8D1B21DB17008D3753 /* 1pxBlue.png in Resources */,
-				D05A72EE1AF8BEE2006412C8 /* Main.storyboard in Resources */,
-				D0C552D21AF8C9CF0017CBC3 /* abris_appuis_velos.json in Resources */,
+				D3CB1E2F1B3D9E5200582481 /* abris_appuis_velos.json in Resources */,
+				D3CB1E2C1B3D9E4500582481 /* GIG_GIC.json in Resources */,
+				D3CB1E271B3D9E2B00582481 /* Images.xcassets in Resources */,
+				D3CB1E2D1B3D9E4500582481 /* Horodateurs.json in Resources */,
+				D3CB1E251B3D9E1500582481 /* Main.storyboard in Resources */,
 				D05A72F31AF8BEE2006412C8 /* LaunchScreen.xib in Resources */,
-				D05A72F01AF8BEE2006412C8 /* Images.xcassets in Resources */,
+				D3CB1E2B1B3D9E4500582481 /* Equipements_publics.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -360,23 +418,29 @@
 			files = (
 				D026C0D81B173FAC0040D36A /* AFHTTPRequestOperation.m in Sources */,
 				D026C0E51B173FAC0040D36A /* UIImageView+AFNetworking.m in Sources */,
-				D05A72EB1AF8BEE2006412C8 /* ViewController.m in Sources */,
 				D026C0D91B173FAC0040D36A /* AFHTTPRequestOperationManager.m in Sources */,
 				D026C0E61B173FAC0040D36A /* UIProgressView+AFNetworking.m in Sources */,
 				D026C0DB1B173FAC0040D36A /* AFNetworkReachabilityManager.m in Sources */,
 				D026C0DF1B173FAC0040D36A /* AFURLResponseSerialization.m in Sources */,
 				D026C0DD1B173FAC0040D36A /* AFURLConnectionOperation.m in Sources */,
 				D026C0E41B173FAC0040D36A /* UIButton+AFNetworking.m in Sources */,
+				D3CB1E181B3D9DA900582481 /* ParkPointAnnotation.m in Sources */,
+				D3CB1E231B3D9DFE00582481 /* ViewController.m in Sources */,
 				D026C0E21B173FAC0040D36A /* UIActivityIndicatorView+AFNetworking.m in Sources */,
 				D026C0DC1B173FAC0040D36A /* AFSecurityPolicy.m in Sources */,
 				D026C0E71B173FAC0040D36A /* UIRefreshControl+AFNetworking.m in Sources */,
 				D026C0E81B173FAC0040D36A /* UIWebView+AFNetworking.m in Sources */,
 				D026C0DA1B173FAC0040D36A /* AFHTTPSessionManager.m in Sources */,
-				D0FB9E8B1B21CBF8008D3753 /* ShelterPointAnnotation.m in Sources */,
+				D3CB1E1C1B3D9DA900582481 /* SettingViewController.m in Sources */,
 				D026C0E31B173FAC0040D36A /* UIAlertView+AFNetworking.m in Sources */,
 				D026C0DE1B173FAC0040D36A /* AFURLRequestSerialization.m in Sources */,
+				D3CB1E1A1B3D9DA900582481 /* Setting2ViewController.m in Sources */,
+				D3CB1E1B1B3D9DA900582481 /* Setting3ViewController.m in Sources */,
 				D026C0E11B173FAC0040D36A /* AFNetworkActivityIndicatorManager.m in Sources */,
 				D026C0E01B173FAC0040D36A /* AFURLSessionManager.m in Sources */,
+				D3CB1E1F1B3D9DC300582481 /* TicketmachinePointAnnotation.m in Sources */,
+				D3CB1E211B3D9DE200582481 /* ShelterPointAnnotation.m in Sources */,
+				D3CB1E191B3D9DA900582481 /* ServicePointAnnotation.m in Sources */,
 				D05A72E81AF8BEE2006412C8 /* AppDelegate.m in Sources */,
 				D05A72E51AF8BEE2006412C8 /* main.m in Sources */,
 			);
@@ -401,14 +465,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		D05A72EC1AF8BEE2006412C8 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				D05A72ED1AF8BEE2006412C8 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		D05A72F11AF8BEE2006412C8 /* LaunchScreen.xib */ = {
 			isa = PBXVariantGroup;
 			children = (

@@ -9,39 +9,40 @@
 #import "ViewController.h"
 @import MapKit;
 #import "AFNetworking.h"
+
 #import "ShelterPointAnnotation.h"
+#import "TicketmachinePointAnnotation.h"
+#import "ParkPointAnnotation.h"
+#import "ServicePointAnnotation.h"
+
+#import "SettingViewController.h"
+#import "Setting2ViewController.h"
+#import "Setting3ViewController.h"
 
 
 // position de test dans Poitiers : 46,583719    0,3400767
 
-/// URL du serveur
-#define kSERVER_URL @"https://open-data-poitiers.herokuapp.com/bike-shelters/"
-/// URL du service de récupération de tous les abris
-#define kSERVICE_URL_ALL kSERVER_URL"all"
-/// URL du service de recherche des abris les plus proches
+#define kSERVER_URL @"http://192.168.86.184:8080/allInstallations/"
+#define kSERVICE_URL_ALL_SHELTERS kSERVER_URL"allShelters"
+#define kSERVICE_URL_ALL_TICKETMACHINES kSERVER_URL"allTicketmachines"
+#define kSERVICE_URL_ALL_PARKS kSERVER_URL"allParks"
+#define kSERVICE_URL_ALL_SERVICES kSERVER_URL"allServices"
 #define kSERVICE_URL_FIND_FMT kSERVER_URL"find?lat=%f&lon=%f"
 
 @interface ViewController () <MKMapViewDelegate, CLLocationManagerDelegate>
 
-/// Outlet de la carte
 @property (strong, nonatomic) IBOutlet MKMapView *mapView;
 
-/// Gestionnaire de positionnement
 @property (nonatomic, strong) CLLocationManager * locationManager;
-/// Totalité des données de tous les abris
-@property (nonatomic, strong) NSArray * allData;
+@property (nonatomic, strong) NSArray * shelterData;
+@property (nonatomic, strong) NSArray * ticketmachineData;
+@property (nonatomic, strong) NSArray * parkData;
+@property (nonatomic, strong) NSArray * serviceData;
 
 @end
 
 @implementation ViewController
 
-/**
- * @brief Exécute un service web de manière asynchrone
- *
- * @param aServiceURL URL du service à appeler
- * @param aSuccessBlock Block exécuté en cas de succès, le résultat JSON est passé au paramètre responseObject
- * @param aFailureBlock Block exécuté en cas d'échec
- */
 - (void) executeService:(NSString *) aServiceURL
             withSuccess:(void (^)(AFHTTPRequestOperation *operation, id responseObject))aSuccessBlock
                 failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))aFailureBlock {
@@ -56,22 +57,40 @@
     [operation start];
 }
 
-/**
- * @brief Mise à jour des données depuis le serveur
- */
 - (void) updateData {
-    [self executeService:kSERVICE_URL_ALL
+    [self executeService:kSERVICE_URL_ALL_SHELTERS
              withSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
-                 self.allData = responseObject;
+                 self.shelterData = responseObject;
+                 [self updateMapAnnotations];
+             } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                 NSLog(@"%@",error);
+             }];
+    
+    [self executeService:kSERVICE_URL_ALL_TICKETMACHINES
+             withSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+                 self.ticketmachineData = responseObject;
+                 [self updateMapAnnotations];
+             } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                 NSLog(@"%@",error);
+             }];
+    
+    [self executeService:kSERVICE_URL_ALL_PARKS
+             withSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+                 self.parkData = responseObject;
+                 [self updateMapAnnotations];
+             } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                 NSLog(@"%@",error);
+             }];
+    
+    [self executeService:kSERVICE_URL_ALL_SERVICES
+             withSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+                 self.serviceData = responseObject;
                  [self updateMapAnnotations];
              } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
                  NSLog(@"%@",error);
              }];
 }
 
-/**
- * @brief Met à jour le zoom de la carte centré sur la position de l'utilisateur et des abris les plus proches
- */
 - (void) updateZoomAround {
     CLLocationCoordinate2D userCoordinates = self.locationManager.location.coordinate;
     
@@ -83,12 +102,6 @@
              }];
 }
 
-/**
- * @brief Met à jour le zoom de la carte en fonction d'un tableau d'abris et des coordonnées de l'utilisateur
- *
- * @param aShelters Tableau d'abris dont les coordonnées sont stockées dans le keypath shelter.location
- * @param aUserCoordinates Coordonnées de l'utilisateur
- */
 - (void) updateRegionWithShelters:(NSArray*) aShelters andUserCoordinates:(CLLocationCoordinate2D) aUserCoordinates {
     if ((aShelters == nil) || (aShelters.count == 0)) {
         return;
@@ -98,9 +111,6 @@
     [self.mapView setRegion:fullRegion animated:YES];
 }
 
-/**
- * @brief Événement exécuté au chargement de la vue
- */
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
@@ -109,17 +119,27 @@
     
     self.locationManager.delegate = self;
     
-    NSData * json = [NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"abris_appuis_velos" ofType:@".json"]];
-    self.allData = [NSJSONSerialization JSONObjectWithData:json options:0 error:NULL];
+    NSData * jsonShelter = [NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"abris_appuis_velos" ofType:@".json"]];
+    self.shelterData = [NSJSONSerialization JSONObjectWithData:jsonShelter options:0 error:NULL];
+    
+    NSData * jsonTicketmachine = [NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"Horodateurs" ofType:@".json"]];
+    self.ticketmachineData = [NSJSONSerialization JSONObjectWithData:jsonTicketmachine options:0 error:NULL];
+    
+    NSData * jsonPark = [NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"GIG_GIC" ofType:@".json"]];
+    self.parkData = [NSJSONSerialization JSONObjectWithData:jsonPark options:0 error:NULL];
+    
+    NSData * dataService = [NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"Equipements_publics" ofType:@"json"]];
+    self.serviceData = [NSJSONSerialization JSONObjectWithData: dataService options: 0 error: NULL];
 }
 
-/**
- * @brief Événement exécuté avant l'affichage de la vue
- */
 - (void) viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
-    MKCoordinateRegion fullRegion = [self regionFromCoordinates:[self.allData valueForKey:@"location"]];
+    NSArray * shelterLocation = [self.shelterData valueForKey:@"location"];
+    NSArray * ticketmachineLocation = [self.ticketmachineData valueForKey:@"location"];
+    NSArray * parkLocation = [self.parkData valueForKey:@"location"];
+    NSArray * serviceLocation = [self.serviceData valueForKey:@"location"];
+    MKCoordinateRegion fullRegion = [self regionFromCoordinates:[[[shelterLocation arrayByAddingObjectsFromArray:ticketmachineLocation] arrayByAddingObjectsFromArray:parkLocation] arrayByAddingObjectsFromArray:serviceLocation]];
     [self.mapView setRegion:fullRegion animated:animated];
     
     [self updateMapAnnotations];
@@ -128,13 +148,10 @@
     [self.locationManager startUpdatingLocation];
 }
 
-/**
- * @brief Met à jour les annoations de la carte
- */
 - (void) updateMapAnnotations {
     [self.mapView removeAnnotations:self.mapView.annotations];
     
-    [self createAnnotations:self.allData];
+    [self createAnnotationsForShelters:self.shelterData andTicketmachines:self.ticketmachineData andParks:self.parkData andServices:self.serviceData];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -144,12 +161,6 @@
 
 #pragma mark - Map Helpers
 
-/**
- * @brief Renvoie une région à partir d'un tableau de coordonnées
- *
- * @param aCoordoniates Tableau de coordonnées
- * @return Région englobant les coordonnées
- */
 - (MKCoordinateRegion) regionFromCoordinates:(NSArray *) aCoordinates {
     __block CLLocationDegrees maxLat = DBL_MIN;
     __block CLLocationDegrees minLat = DBL_MAX;
@@ -180,51 +191,86 @@
     return MKCoordinateRegionMake(center, span);
 }
 
-/**
- * @brief Crée les annotations pour tous les abris
- *
- * @param aSelters Tableau des abris
- */
-- (void) createAnnotations:(NSArray *) aShelters {
+- (void) createAnnotationsForShelters:(NSArray *) aShelters andTicketmachines:(NSArray *) aTicketmachine andParks:(NSArray *) aPark andServices:(NSArray *) aService{
     [aShelters enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
         ShelterPointAnnotation * annotation = [[ShelterPointAnnotation alloc] init];
         annotation.shelterData = obj;
+        [self.mapView addAnnotation:annotation];
+    }];
+    
+    [aTicketmachine enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        TicketmachinePointAnnotation * annotation = [[TicketmachinePointAnnotation alloc] init];
+        annotation.ticketmachineData = obj;
+        [self.mapView addAnnotation:annotation];
+    }];
+    
+    [aPark enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        ParkPointAnnotation * annotation = [[ParkPointAnnotation alloc] init];
+        annotation.parkData = obj;
+        [self.mapView addAnnotation:annotation];
+    }];
+    
+    [aService enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        ServicePointAnnotation * annotation = [[ServicePointAnnotation alloc] init];
+        annotation.serviceData = obj;
         [self.mapView addAnnotation:annotation];
     }];
 }
 
 #pragma mark - MKMapViewDelegate
 
-/**
- * @brief Méthode du protocole MKMapViewDelegate renvoyant la vue associées à une annotation
- */
 - (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id <MKAnnotation>)annotation {
+
+    MKAnnotationView * pinView = (MKAnnotationView *)[mapView dequeueReusableAnnotationViewWithIdentifier:@"ANNOTATION"];
+    if (pinView == nil) {
+        pinView = [[MKAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"ANNOTATION"];
+    }
+    
+    pinView.annotation = annotation;
+    pinView.canShowCallout =YES;
+    UIImage * buttonImage = [UIImage imageNamed:@"go"];
+    UIButton * detailButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, buttonImage.size.width, buttonImage.size.height)];
+    [detailButton setImage:buttonImage forState:UIControlStateNormal];
+    pinView.rightCalloutAccessoryView = detailButton;
+    
     if ([annotation isKindOfClass:[ShelterPointAnnotation class]]) {
         ShelterPointAnnotation * shelterAnnotation = annotation;
-        MKAnnotationView *pinView = (MKAnnotationView*)[mapView dequeueReusableAnnotationViewWithIdentifier:@"BIKE_ANNOTATION"];
-        if (pinView == nil) {
-            pinView = [[MKAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"BIKE_ANNOTATION"];
-        }
-
-        pinView.annotation = annotation;
-        pinView.canShowCallout = YES;
         pinView.image = [UIImage imageNamed:shelterAnnotation.isShelter?@"bike_shelter":@"bike"];
-
-        UIImage * buttonImage = [UIImage imageNamed:@"go"];
-        UIButton * detailButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, buttonImage.size.width, buttonImage.size.height)];
-        [detailButton setImage:buttonImage forState:UIControlStateNormal];
-        pinView.rightCalloutAccessoryView = detailButton;
-
-        return pinView;
-    }
-    else {
+    } else if ([annotation isKindOfClass:[TicketmachinePointAnnotation class]]) {
+        pinView.image = [UIImage imageNamed:@"horodateur"];
+    } else if ([annotation isKindOfClass:[ParkPointAnnotation class]]) {
+        pinView.image = [UIImage imageNamed:@"handicap"];
+    } else if ([annotation isKindOfClass:[ServicePointAnnotation class]]) {
+        ServicePointAnnotation * serviceAnnotation = annotation;
+        if(serviceAnnotation.isEnvironment) {
+            pinView.image = [UIImage imageNamed:@"environnement"];
+        } else if (serviceAnnotation.isAdministration) {
+            pinView.image = [UIImage imageNamed:@"administration"];
+        } else if (serviceAnnotation.isHealth) {
+            pinView.image = [UIImage imageNamed:@"sante"];
+        } else if (serviceAnnotation.isSchool){
+            pinView.image = [UIImage imageNamed:@"scolaire"];
+        } else if (serviceAnnotation.isSport){
+            pinView.image = [UIImage imageNamed:@"sport"];
+        } else if (serviceAnnotation.isCulture){
+            pinView.image = [UIImage imageNamed:@"culture"];
+        } else if (serviceAnnotation.isChild){
+            pinView.image = [UIImage imageNamed:@"enfance"];
+        } else if (serviceAnnotation.isTransport){
+            pinView.image = [UIImage imageNamed:@"transport"];
+        } else if (serviceAnnotation.isHistory){
+            pinView.image = [UIImage imageNamed:@"patrimoine"];
+        } else if (serviceAnnotation.isSocial){
+            pinView.image = [UIImage imageNamed:@"social"];
+        } else {
+            [self.mapView removeAnnotation:annotation];
+        }
+    } else {
         return nil;
     }
+    return pinView;
 }
 
-/**
- * @brief Méthode du protocole MKMapViewDelegate renvoyant la vue associées à une couche
- */
 - (MKOverlayView *)mapView:(MKMapView *)mapView viewForOverlay:(id)overlay {
     
     if ([overlay isKindOfClass:[MKPolyline class]]) {
@@ -236,9 +282,6 @@
     return nil;
 }
 
-/**
- * @brief Méthode du protocole MKMapViewDelegate exécutée quand l'utilisateur clique sur le bouton de la bulle d'une annotation
- */
 - (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control {
     NSLog(@"accessory button tapped for annotation %@", view.annotation);
     
@@ -290,9 +333,6 @@
 
 #pragma mark - CLLocationManagerDelegate
 
-/**
- * @brief Méthode du protocole CLLocationManager exécutée lorsque la position de l'utilisateur est mise à jour
- */
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {
     [self updateZoomAround];
     self.locationManager.delegate = nil;
