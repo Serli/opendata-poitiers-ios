@@ -30,6 +30,8 @@
 @property (nonatomic, strong) CLLocationManager * locationManager;
 /// Totalité des données de tous les abris
 @property (nonatomic, strong) NSArray * allData;
+/// Premier lancement
+@property (nonatomic, assign) BOOL firstTime;
 
 @end
 
@@ -104,6 +106,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+    self.firstTime = YES;
+    
     self.locationManager = [[CLLocationManager alloc] init];
     [self.locationManager requestWhenInUseAuthorization];
     
@@ -119,13 +123,17 @@
 - (void) viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
-    MKCoordinateRegion fullRegion = [self regionFromCoordinates:[self.allData valueForKey:@"location"]];
-    [self.mapView setRegion:fullRegion animated:animated];
-    
-    [self updateMapAnnotations];
+    if (self.firstTime) {
+        self.firstTime = NO;
 
-    [self updateData];
-    [self.locationManager startUpdatingLocation];
+        MKCoordinateRegion fullRegion = [self regionFromCoordinates:[self.allData valueForKey:@"location"]];
+        [self.mapView setRegion:fullRegion animated:animated];
+        
+        [self updateMapAnnotations];
+        
+        [self updateData];
+        [self.locationManager startUpdatingLocation];
+    }
 }
 
 /**
@@ -276,14 +284,14 @@
             NSLog(@"Route Name : %@",route.name);
             NSLog(@"Total Distance (in Meters) :%f",route.distance);
             
-            NSArray *steps = route.steps;
+/*            NSArray *steps = route.steps;
             
             NSLog(@"Total Steps : %ld",(long)steps.count);
             
             [steps enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
                 NSLog(@"Route Instruction : %@",[obj instructions]);
                 NSLog(@"Route Distance : %f",[obj distance]);
-            }];
+            }];*/
         }];
     }];
 }

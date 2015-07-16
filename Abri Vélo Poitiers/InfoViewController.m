@@ -7,6 +7,7 @@
 //
 
 #import "InfoViewController.h"
+#import "NSBundle+Version.h"
 
 @interface InfoViewController ()
 
@@ -20,6 +21,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    [self loadInfos];
+    [self updateVersion];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -30,19 +33,18 @@
 - (void) viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
+}
+
+#pragma mark - Prepare view
+
+- (void) loadInfos {
     NSURL * rtfUrl = [[NSBundle mainBundle] URLForResource: @"infos" withExtension:@"rtf"];
     NSAttributedString * rtfFileContent = [[NSAttributedString alloc] initWithFileURL:rtfUrl options:@{NSDocumentTypeDocumentAttribute:NSRTFTextDocumentType} documentAttributes:nil error:nil];
     self.infoTextView.attributedText = rtfFileContent;
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (void) updateVersion {
+    self.versionLabel.text = [NSBundle displayVersion];
 }
-*/
 
 @end
