@@ -199,8 +199,8 @@
 		D05A72D61AF8BEE2006412C8 = {
 			isa = PBXGroup;
 			children = (
-				D05A72E11AF8BEE2006412C8 /* Abri Vélo Poitiers */,
-				D05A72FB1AF8BEE2006412C8 /* Abri Vélo PoitiersTests */,
+				D05A72E11AF8BEE2006412C8 /* Poitiers Vélo */,
+				D05A72FB1AF8BEE2006412C8 /* Poitiers Vélo Tests */,
 				D05A72E01AF8BEE2006412C8 /* Products */,
 				D05A730A1AF8BFDA006412C8 /* Frameworks */,
 			);
@@ -215,7 +215,7 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		D05A72E11AF8BEE2006412C8 /* Abri Vélo Poitiers */ = {
+		D05A72E11AF8BEE2006412C8 /* Poitiers Vélo */ = {
 			isa = PBXGroup;
 			children = (
 				D0C552D01AF8C9BD0017CBC3 /* Resources */,
@@ -234,6 +234,7 @@
 				D026C0B21B173FAC0040D36A /* AFNetworking */,
 				D026C0C61B173FAC0040D36A /* UIKit+AFNetworking */,
 			);
+			name = "Poitiers Vélo";
 			path = "Abri Vélo Poitiers";
 			sourceTree = "<group>";
 		};
@@ -246,12 +247,13 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		D05A72FB1AF8BEE2006412C8 /* Abri Vélo PoitiersTests */ = {
+		D05A72FB1AF8BEE2006412C8 /* Poitiers Vélo Tests */ = {
 			isa = PBXGroup;
 			children = (
 				D05A72FE1AF8BEE2006412C8 /* Abri_Ve_lo_PoitiersTests.m */,
 				D05A72FC1AF8BEE2006412C8 /* Supporting Files */,
 			);
+			name = "Poitiers Vélo Tests";
 			path = "Abri Vélo PoitiersTests";
 			sourceTree = "<group>";
 		};
@@ -329,6 +331,7 @@
 				TargetAttributes = {
 					D05A72DE1AF8BEE2006412C8 = {
 						CreatedOnToolsVersion = 6.3.1;
+						DevelopmentTeam = MLQX67SHNB;
 						SystemCapabilities = {
 							com.apple.Maps.iOS = {
 								enabled = 0;
@@ -538,9 +541,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "Abri Vélo Poitiers/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "Poitiers Vélo";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -548,10 +554,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "Abri Vélo Poitiers/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "Poitiers Vélo";
-				PROVISIONING_PROFILE = "10a4f2d6-e42a-4504-a76e-9a9bb21bd42e";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
