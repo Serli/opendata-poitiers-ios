@@ -30,17 +30,13 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void) viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-    
-}
-
 #pragma mark - Prepare view
 
 - (void) loadInfos {
     NSURL * rtfUrl = [[NSBundle mainBundle] URLForResource: @"infos" withExtension:@"rtf"];
     NSAttributedString * rtfFileContent = [[NSAttributedString alloc] initWithFileURL:rtfUrl options:@{NSDocumentTypeDocumentAttribute:NSRTFTextDocumentType} documentAttributes:nil error:nil];
     self.infoTextView.attributedText = rtfFileContent;
+    [self.infoTextView setContentOffset:CGPointMake(0, -1000) animated:YES];
 }
 
 - (void) updateVersion {
