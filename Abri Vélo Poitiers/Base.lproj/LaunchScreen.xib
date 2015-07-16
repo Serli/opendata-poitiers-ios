@@ -10,20 +10,14 @@
             <rect key="frame" x="0.0" y="0.0" width="480" height="480"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="1pxBlue.png" translatesAutoresizingMaskIntoConstraints="NO" id="ihH-yD-TQR">
-                    <rect key="frame" x="0.0" y="0.0" width="480" height="480"/>
-                </imageView>
                 <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="launch" translatesAutoresizingMaskIntoConstraints="NO" id="eQ3-3r-W3d">
-                    <rect key="frame" x="115" y="115" width="250" height="250"/>
+                    <rect key="frame" x="112" y="112" width="256" height="256"/>
                 </imageView>
             </subviews>
+            <color key="backgroundColor" red="0.0" green="0.3411764705882353" blue="0.63529411764705879" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstAttribute="centerX" secondItem="eQ3-3r-W3d" secondAttribute="centerX" id="QF2-RJ-SgQ"/>
                 <constraint firstAttribute="centerY" secondItem="eQ3-3r-W3d" secondAttribute="centerY" id="R6Y-52-kLK"/>
-                <constraint firstAttribute="bottom" secondItem="ihH-yD-TQR" secondAttribute="bottom" id="b9o-sP-OyM"/>
-                <constraint firstAttribute="trailing" secondItem="ihH-yD-TQR" secondAttribute="trailing" id="chW-00-0SZ"/>
-                <constraint firstItem="ihH-yD-TQR" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="huj-v3-uGc"/>
-                <constraint firstItem="ihH-yD-TQR" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="pfB-D6-lZm"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
@@ -31,7 +25,6 @@
         </view>
     </objects>
     <resources>
-        <image name="1pxBlue.png" width="1" height="1"/>
-        <image name="launch" width="250" height="250"/>
+        <image name="launch" width="256" height="256"/>
     </resources>
 </document>

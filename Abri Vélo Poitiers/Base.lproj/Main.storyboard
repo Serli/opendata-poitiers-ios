@@ -22,13 +22,25 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="w6Y-gK-3ha"/>
                                 </connections>
                             </mapView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="infoLight" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aXv-7v-XDs">
+                                <rect key="frame" x="558" y="558" width="22" height="22"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="normal">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="xek-ep-cUJ" kind="presentation" modalTransitionStyle="flipHorizontal" id="3ip-2x-RII"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="DHg-yA-LcT" secondAttribute="trailing" id="2d3-xj-e23"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="DHg-yA-LcT" secondAttribute="bottom" id="5Oc-Sx-RjP"/>
                             <constraint firstItem="DHg-yA-LcT" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="BrG-6Y-q61"/>
+                            <constraint firstAttribute="trailing" secondItem="aXv-7v-XDs" secondAttribute="trailing" constant="20" id="JN2-c1-3ga"/>
                             <constraint firstItem="DHg-yA-LcT" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="XTb-1v-Zg1"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="aXv-7v-XDs" secondAttribute="bottom" constant="20" id="rDM-VD-Ktz"/>
                         </constraints>
                     </view>
                     <connections>
@@ -38,5 +50,102 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
         </scene>
+        <!--Info View Controller-->
+        <scene sceneID="aLs-Am-wV8">
+            <objects>
+                <viewController id="xek-ep-cUJ" customClass="InfoViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="OpU-sE-8dE"/>
+                        <viewControllerLayoutGuide type="bottom" id="CRS-dl-NUN"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Uug-d9-5su">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hhl-qa-cZh">
+                                <rect key="frame" x="285" y="562" width="30" height="30"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="OK">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <variation key="heightClass=regular-widthClass=regular">
+                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                </variation>
+                                <connections>
+                                    <segue destination="Cp4-EZ-pd4" kind="unwind" unwindAction="unwindToMainViewController:" id="XXt-tp-r0h"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UHk-Uv-sTz">
+                                <rect key="frame" x="172" y="20" width="256.5" height="60"/>
+                                <attributedString key="attributedText">
+                                    <fragment content="Poitiers">
+                                        <attributes>
+                                            <color key="NSColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <font key="NSFont" size="50" name="HelveticaNeue-CondensedBlack"/>
+                                            <font key="NSOriginalFont" size="50" name="HelveticaNeue-CondensedBlack"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="right" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content=" Vélo">
+                                        <attributes>
+                                            <color key="NSColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <font key="NSFont" size="50" name="HelveticaNeue-UltraLight"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="right" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="v.x.x build x" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gX5-G1-HzW">
+                                <rect key="frame" x="346" y="71" width="82" height="20.5"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="transparentSerli" translatesAutoresizingMaskIntoConstraints="NO" id="d2y-uJ-usy">
+                                <rect key="frame" x="240" y="91" width="120" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="Udh-VH-F8g"/>
+                                    <constraint firstAttribute="width" constant="120" id="fZ1-8C-VHw"/>
+                                </constraints>
+                            </imageView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" indicatorStyle="white" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P5p-X9-xQZ">
+                                <rect key="frame" x="16" y="139" width="568" height="415"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.0" green="0.3411764705882353" blue="0.63529411764705879" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="gX5-G1-HzW" firstAttribute="top" secondItem="UHk-Uv-sTz" secondAttribute="bottom" constant="-9" id="0M5-pl-bBi"/>
+                            <constraint firstAttribute="centerX" secondItem="d2y-uJ-usy" secondAttribute="centerX" id="B9r-DC-NYV"/>
+                            <constraint firstItem="d2y-uJ-usy" firstAttribute="top" secondItem="gX5-G1-HzW" secondAttribute="bottom" id="CM2-Fn-0Ed"/>
+                            <constraint firstItem="CRS-dl-NUN" firstAttribute="top" secondItem="Hhl-qa-cZh" secondAttribute="bottom" constant="8" id="CUh-Dk-VcE"/>
+                            <constraint firstItem="UHk-Uv-sTz" firstAttribute="top" secondItem="OpU-sE-8dE" secondAttribute="bottom" id="Nom-75-otV"/>
+                            <constraint firstItem="UHk-Uv-sTz" firstAttribute="trailing" secondItem="gX5-G1-HzW" secondAttribute="trailing" constant="0.5" id="YwX-lR-pk5"/>
+                            <constraint firstItem="P5p-X9-xQZ" firstAttribute="top" secondItem="d2y-uJ-usy" secondAttribute="bottom" constant="8" id="aYe-Ex-yaa"/>
+                            <constraint firstAttribute="centerX" secondItem="UHk-Uv-sTz" secondAttribute="centerX" id="bvN-YH-ex8"/>
+                            <constraint firstItem="P5p-X9-xQZ" firstAttribute="leading" secondItem="Uug-d9-5su" secondAttribute="leading" constant="16" id="dFs-Xp-ldk"/>
+                            <constraint firstItem="Hhl-qa-cZh" firstAttribute="top" secondItem="P5p-X9-xQZ" secondAttribute="bottom" constant="8" id="fik-YL-y3A"/>
+                            <constraint firstAttribute="centerX" secondItem="Hhl-qa-cZh" secondAttribute="centerX" id="pfv-z4-eul"/>
+                            <constraint firstAttribute="trailing" secondItem="P5p-X9-xQZ" secondAttribute="trailing" constant="16" id="qDc-hE-hdl"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="infoTextView" destination="P5p-X9-xQZ" id="AYq-9O-8sw"/>
+                        <outlet property="versionLabel" destination="gX5-G1-HzW" id="y2D-ho-F4r"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YM0-z0-Y8g" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="Cp4-EZ-pd4" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="1010" y="240"/>
+        </scene>
     </scenes>
+    <resources>
+        <image name="transparentSerli" width="120" height="40"/>
+    </resources>
 </document>
