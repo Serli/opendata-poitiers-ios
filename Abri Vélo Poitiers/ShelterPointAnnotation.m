@@ -18,7 +18,7 @@
 - (void)setShelterData:(NSDictionary *)aShelterData {
     _shelterData = aShelterData;
     
-    NSLog(@"%@",aShelterData);
+//    NSLog(@"%@",aShelterData);
     
     NSArray * coordinates = aShelterData[@"location"];
     CLLocationDegrees lat = [coordinates[1] doubleValue];
