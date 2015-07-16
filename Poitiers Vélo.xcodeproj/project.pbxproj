@@ -343,10 +343,10 @@
 			};
 			buildConfigurationList = D05A72DA1AF8BEE2006412C8 /* Build configuration list for PBXProject "Poitiers Vélo" */;
 			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
+			developmentRegion = French;
 			hasScannedForEncodings = 0;
 			knownRegions = (
-				en,
+				fr,
 				Base,
 			);
 			mainGroup = D05A72D61AF8BEE2006412C8;
